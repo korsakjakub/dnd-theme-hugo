@@ -1,0 +1,27 @@
+<div id="map" style="height: 600px;"></div>
+<script>
+    var map = L.map('map', {
+        crs: L.CRS.Simple,
+        minZoom: -2,
+        maxZoom: 1
+    });
+    var yx = L.latLng;
+    var xy = function(x, y) {
+        if (Array.isArray(x)) {
+            return yx(x[1], x[0]);
+        }
+        return yx(y, x);
+    };
+    var bounds = [xy(0, 0), xy(2513, 3263)]
+    var image = L.imageOverlay('/images/map.jpg', bounds)
+    image.addTo(map)
+    map.fitBounds(bounds);
+{{ range $.Site.Data.map.places.places -}}
+{{ if .link }}
+    var x = parseFloat('{{ .coords.x_coord }}')
+    var y = parseFloat('{{ .coords.y_coord }}')
+    L.marker(xy(x, y)).addTo(map).bindPopup(' <b>{{ .title }}</b><br><a href="{{ .Site.BaseURL }}/{{ .link }}">link</a>')
+{{ end }}
+{{- end }}
+    map.setView([3000, 1200], -1);
+</script>

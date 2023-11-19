@@ -1,22 +1,29 @@
-html[theme='dark-mode'] {
-  filter: invert(1) hue-rotate(180deg);
+:root {
+  --main-nav: #fff;
+  --main-text: #eeeeee;
+  --main-link: #709aff;
+  --main-link-hover: #0366d6;
+  --main-accent: #bbbbbb;
+  --md-blockquote: #dadada;
+  --md-line: #eee;
+  --list-page-cover: #fff;
+  --main-footer-hover: #ff3356
 }
-
 body {
   line-height: 1;
   font: normal 15px/1.5em 'Helvetica Neue', Helvetica, Arial, sans-serif;
-  color: #404040;
+  color: var(--main-text);
   line-height: 1.75;
   letter-spacing: 0.008em;
 }
 
 a {
   text-decoration: none;
-  color: #5badf0;
+  color: var(--main-link);
 }
 
 a:hover {
-  color: #0366d6;
+  color: var(--main-link-hover);
 }
 
 /* markdown content styles */
@@ -25,8 +32,8 @@ blockquote {
   margin-bottom: 5px;
   padding-left: 1em;
   margin-left: 0px;
-  border-left: 3px solid #eee;
-  color: #757575;
+  border-left: 3px solid var(--md-line);
+  color: var(--md-blockquote);
 }
 
 hr {
@@ -34,7 +41,7 @@ hr {
   border: none;
   height: 2px;
   margin: 40px auto;
-  background: #eee;
+  background: var(--md-line);
 }
 
 table {
@@ -133,8 +140,7 @@ pre code {
 
 nav.navigation {
   padding: 20px 20px 0;
-  background: #fff;
-  background: rgba(255, 255, 255, 0.9);
+  display: block;
   margin: 0 auto;
   text-align: right;
   z-index: 100;
@@ -144,46 +150,20 @@ nav.navigation a {
   top: 8px;
   right: 6px;
   padding: 8px 12px;
-  color: #5badf0;
+  color: var(--main-link);
   font-size: 13px;
   line-height: 1.35;
   border-radius: 3px;
 }
 nav.navigation a:hover {
-  color: #0366d6;
+  color: var(--main-link-hover);
 }
 
 nav.navigation a.button {
-  background: #5badf0;
-  color: #fff;
+  background: var(--main-link);
+  color: var(--main-nav);
   margin-left: 12px;
 }
-@media (max-width: 700px) {
-  nav.navigation {
-    padding: 20px 10px 0 0;
-    background: #fff;
-    background: rgba(255, 255, 255, 0.9);
-    margin: 0 auto;
-    text-align: right;
-    z-index: 100;
-  }
-  nav.navigation a {
-    top: 8px;
-    right: 6px;
-    padding: 8px 8px;
-    color: #5badf0;
-    font-size: 13px;
-    line-height: 1.35;
-    border-radius: 3px;
-  }
-}
-
-@media (max-width: 324px) {
-  nav.navigation a.button {
-    display: none;
-  }
-}
-
 /* toc */
 .toc {
   margin: auto;
@@ -217,7 +197,7 @@ nav.navigation a.button {
   margin-top: 100px;
   margin-bottom: 100px;
   text-align: center;
-  color: #bbbbbb;
+  color: var(--main-accent);
   font-size: 14px;
 }
 #footer .copyright {
@@ -232,7 +212,7 @@ nav.navigation a.button {
   cursor: pointer;
 }
 #footer .split:hover path {
-  fill: #ff3356;
+  fill: var(--main-footer-hover);
   transition: 0.7s ease-out;
   cursor: pointer;;
 }
@@ -265,7 +245,7 @@ nav.navigation a.button {
   font-weight: 400;
   letter-spacing: 0px;
   font-size: 20px;
-  color: #404040;
+  color: var(--main-text);
   margin-bottom: 0;
   margin-top: 0;
 }
@@ -273,15 +253,14 @@ nav.navigation a.button {
 .profile h2 {
   font-size: 20px;
   font-weight: 300;
-  color: #757575;
+  color: var(--md-blockquote);
   margin-top: 0;
 }
 
 /* index post list */
 #list-page {
-  max-width: 580px;
+  max-width: 720px;
   margin: 0 auto;
-  padding: 0 24px;
 }
 
 #list-page .item {
@@ -290,7 +269,7 @@ nav.navigation a.button {
 
 #list-page .title {
   display: inline-block;
-  color: #404040;
+  color: var(--main-text);
   font-size: 20px;
   font-weight: 400;
   margin: 0;
@@ -298,12 +277,12 @@ nav.navigation a.button {
 }
 
 #list-page .title a {
-  color: #404040;
+  color: var(--main-text);
   display: block;
 }
 
 #list-page .title a:hover {
-  color: #0366d6;
+  color: var(--main-link-hover);
 }
 
 #list-page .date {
@@ -312,11 +291,11 @@ nav.navigation a.button {
   text-align: right;
   position: relative;
   top: 1px;
-  color: #bbb;
+  color: var(--main-accent);
 }
 
-#list-page .summary {
-  color: #757575;
+#list-page summary {
+  color: var(--md-blockquote);
   margin-top: 12px;
   word-break: normal;
   overflow-wrap: anywhere;
@@ -326,7 +305,7 @@ nav.navigation a.button {
 #list-page .cover {
   width: 100px;
   height: 100px;
-  background: #fff;
+  background: var(--list-page-cover);
 }
 
 #list-page .cover img {
@@ -350,7 +329,7 @@ nav.navigation a.button {
 
 /* single page */
 #single {
-  max-width: 680px;
+  max-width: 800px;
   margin: 60px auto 0 auto;
   padding: 0 64px;
 }
@@ -362,16 +341,6 @@ nav.navigation a.button {
   line-height: 48px;
 }
 
-@media (max-width: 700px) {
-  #single {
-    padding: 0 18px;
-    margin: 20px auto 0 auto;
-  }
-  #single .title {
-    font-size: 24px;
-    line-height: 32px;
-  }
-}
 
 #single .tip {
   text-align: center;
@@ -391,14 +360,12 @@ nav.navigation a.button {
   margin-top: 24px;
 }
 #single .tags a {
-  background: #f2f2f2;
   padding: 4px 7px;
-  color: #757575;
   font-size: 14px;
   margin-right: 3px;
 }
 #single .tags a:hover {
-  color: #0366d6;
+  color: var(--main-link-hover);
 }
 
 
@@ -433,24 +400,23 @@ nav.navigation a.button {
   display: inline;
 }
 #archive .group .value .title a {
-  color:#404040;
+  color:var(--main-text);
 }
 #archive .group .value .title a:hover {
-  color: #0366d6;
+  color: var(--main-link-hover);
 }
 #archive .group .value .tags {
   display: inline;
   margin-left: 7px;
 }
 #archive .group .value .tags a {
-  background: #f2f2f2;
   padding: 4px 7px;
   color: #999;
   font-size: 14px;
   margin-right: 3px;
 }
 #archive .group .value .tags a:hover {
-  color: #0366d6;
+  color: var(--main-link-hover);
 }
 
 /* taxonomy */
@@ -464,26 +430,16 @@ nav.navigation a.button {
   display: inline-block;
   margin: 7px 7px;
 }
-@media (max-width: 700px) {
-  #tags {
-    margin: 0 auto 0 auto;
-  }
-  #tags .tag {
-    display: inline-block;
-    margin: 4px 5px;
-  }
-}
 
 #tags .tag a {
-  background: #f2f2f2;
   padding: 4px 7px;
-  color: #757575;
-  color: #404040;
+  color: var(--md-blockquote);
+  color: var(--main-text);
   font-size: 14px;
   margin-right: 3px;
 }
 #tags .tag a:hover {
-  color: #0366d6;
+  color: var(--main-link-hover);
 }
 
 /* section page */
@@ -505,7 +461,7 @@ nav.navigation a.button {
 
 #page-404 .title {
   display: inline-block;
-  color: #404040;
+  color: var(--main-text);
   font-size: 15px;
   font-weight: 400;
   margin: 0;
@@ -530,5 +486,5 @@ nav.navigation a.button {
   text-align: right;
   position: relative;
   top: 1px;
-  color: #bbb;
+  color: var(--main-accent);
 }

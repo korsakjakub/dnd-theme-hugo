@@ -10,6 +10,8 @@
   <META NAME="ROBOTS" CONTENT="NOINDEX, NOFOLLOW">
 {{ end }}
 
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@1/css/pico.min.css">
+
 <link rel="stylesheet" href="{{ "/css/style.css" | relURL }}">
 
 {{ range .Site.Params.customCSS }}
@@ -25,11 +27,15 @@
 <link rel="shortcut icon" href="{{ "/images/favicon.ico" | relURL }}" type="image/x-icon" />
 
 {{ if .Site.Params.enableGoogleAnalytics }} 
-  {{ template "_internal/google_analytics.html" . }}
+    {{ template "_internal/google_analytics_async.html" . }}
 {{ end }}
 
 {{ if or .Params.math .Site.Params.math }}
   {{ partial "math.html" . }}
+{{ end }}
+
+{{ if .Params.map }}
+  {{ partial "map_head.html" . }}
 {{ end }}
 
 {{ if .OutputFormats.Get "RSS" }}

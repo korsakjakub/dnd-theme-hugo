@@ -1,16 +1,34 @@
 <nav class="navigation">
 	{{ if not .IsHome }}
-		<a href="{{ "/" | relURL }}"> <span class="arrow">←</span>{{ with .Site.Params.home }}{{ . }}{{ else }}{{ i18n "home" }}{{ end }}</a>
+	<a href="{{ "/" | relURL }}"> <span class="arrow">←</span>{{ with .Site.Params.home }}{{ . }}{{ else }}{{ i18n "home" }}{{ end }}</a>
 	{{ end }}
 	<a href="{{ "/posts" | relURL }}">{{ with .Site.Params.archive }}{{ . }}{{ else }}{{ i18n "archive" }}{{ end }}</a>
 	<a href="{{ "/tags" | relURL }}">{{ with .Site.Params.tags }}{{ . }}{{ else }}{{ i18n "tags" }}{{ end }}</a>
 	<a href="{{ "/about" | relURL }}">{{ with .Site.Params.about }}{{ . }}{{ else }}{{ i18n "about" }}{{ end }}</a>
 
 	{{ range $element := .Site.Params.Links }}
-		<a href="{{ $element.path }}">{{ $element.name }}</a>
+	<a href="{{ $element.path }}">{{ $element.name }}</a>
 	{{ end }}
 
+	<!-- Toggle search visibility link -->
+	<a href="#" id="toggleSearch">Szukaj</a>
+
 	{{ if .Site.Params.enableRSS }}
-	  <a class="button" href="{{ .Site.RSSLink }}">{{ with .Site.Params.subscribe }}{{ . }}{{ else }}{{ i18n "subscribe" }}{{ end }}</a>
+	<a class="button" href="{{ .Site.RSSLink }}">{{ with .Site.Params.subscribe }}{{ . }}{{ else }}{{ i18n "subscribe" }}{{ end }}</a>
 	{{ end }}
+
+	<link href="/pagefind/pagefind-ui.css" rel="stylesheet">
+	<script src="/pagefind/pagefind-ui.js"></script>
+	<div id="search" style="display: none; text-align: left;"></div>
+	<script>
+	window.addEventListener('DOMContentLoaded', (event) => {
+		const pagefindUI = new PagefindUI({ element: "#search", showSubResults: true });
+
+		document.getElementById('toggleSearch').addEventListener('click', function (event) {
+			event.preventDefault();
+			const searchDiv = document.getElementById('search');
+			searchDiv.style.display = (searchDiv.style.display === 'none' || searchDiv.style.display === '') ? 'block' : 'none';
+		});
+	});
+	</script>
 </nav>

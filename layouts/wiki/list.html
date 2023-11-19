@@ -1,0 +1,23 @@
+{{ define "main" }}
+{{ partial "profile.html" . }}
+<section id="archive">
+    {{ range .Paginator.Pages.ByTitle }}
+    <div class="group">
+        <div class="value">
+            <div class="title">
+                <a href="{{ .Permalink }}">
+                    {{ .Title }}
+                </a>
+                {{ with .Params.tags }}
+                <div class="tags">
+                    {{ range . }}
+                    <a href="{{ "tags/" | absURL }}{{ . | urlize }}">{{ . }}</a>
+                    {{ end }}
+                </div>
+                {{ end}}
+            </div>
+        </div>
+    </div>
+    {{ end }}
+</section>
+{{ end }}

@@ -1,0 +1,29 @@
+{{ define "main" }}
+
+<section id="single">
+    <h1 class="title">{{ .Title }}</h1>
+
+    {{ if .Params.Img }}
+    <hr/>
+    <div class="tip">
+    <img src="/images{{ .Params.Img }}" style="max-height: 50vh; max-width: 100%"/>
+    </div>
+    <hr/>
+    {{ end }}
+
+    <div class="content">
+      {{ .Content }}
+    </div>
+
+    {{ with .Params.tags }}
+        <div class="tags">
+            {{ range . }}
+                <a href="{{ "tags/" | absURL }}{{ . | urlize }}">{{ . }}</a>
+            {{ end }}
+        </div>
+    {{ end}}
+    
+</section>
+
+{{ end }}
+

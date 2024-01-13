@@ -7,7 +7,12 @@
   --md-blockquote: #dadada;
   --md-line: #eee;
   --list-page-cover: #fff;
-  --main-footer-hover: #ff3356
+  --main-footer-hover: #ff3356;
+  --pagefind-ui-primary: #fff;
+  --pagefind-ui-text: #fff;
+  --pagefind-ui-background: #11191f;
+  --pagefind-ui-border: #dadada;
+  --pagefind-ui-tag: #dadada;
 }
 body {
   line-height: 1;

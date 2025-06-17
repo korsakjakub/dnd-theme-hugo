@@ -103,7 +103,7 @@ pre {
   overflow-wrap: anywhere;
 }
 .markdown-image img {
-  max-width: 100%;
+  width: 100%;
 }
 .anchor { 
   font-size: 100%; 
